@@ -8,7 +8,7 @@ import aiohttp
 import json
 import os
 from discord.ext import commands 
-from discord.ext.commands import Bot
+from discord.ext.commands import Bot, has_permissions, CheckFailure, BadArgument 
 
 # Prefixes #
 
