@@ -175,7 +175,7 @@ async def Mute(ctx, *, userName: discord.User):
 # Unmute command
 
 @client.command(pass_context=True, name="Unmute")
-@has_permissions(mute_members=True)
+@has_permissions(Mute_members=True)
 async def Unmute(ctx, *, userName: discord.User):
     """Unmute a user""" 
     try:
