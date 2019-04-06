@@ -123,25 +123,16 @@ async def on_ready():
 
 # Mute Command #
 
-@client.command()
-async def Mute(ctx, member: discord.Member=None):
-	mute_role = discord.utils.get(ctx.guild.roles, name = 'Muted')
-	if not member:
-		client.say("Please specifiy a memeber! :thinking:")
-		return
-	await member.add_roles(mute_role)
-	await client.say("Added roles... Member will learn their lesson... Or else!")
-	
-# Unmute command #
-
-@client.command()
-async def Unmute(ctx, member: discord.Member=None):
-	mute_role = discord.utils.get(ctx.guild.roles, name = 'Muted')
-	if not member:
-		client.say("Please specifiy a memeber! :thinking:")
-		return
-	await member.remove_roles(mute_role)
-	await client.say("```I hope you learned your lesson... I removed your role... For the time being!```")
+def mute(self, member, minutes:int):
+        for channel in member.server.channels:
+            perms = discord.PermissionOverwrite()
+            perms.send_messages = False
+            await self.bot.edit_channel_permissions(channel, member, perms)
+        await asyncio.sleep(minutes * 60)
+        for channel in member.server.channels:
+            perms = discord.PermissionOverwrite()
+            perms.send_messages = None
+            await self.bot.edit_channel_permissions(channel, member, perms) 
 	
 # Other important crap #
     
