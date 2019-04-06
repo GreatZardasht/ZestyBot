@@ -123,7 +123,7 @@ async def on_ready():
 
 # Kick Command #
 
-@client.command(pass_context=True, name="Kick")
+@client.command(pass_context=True, name="kick")
 @has_permissions(kick_members=True)
 async def Kick(ctx, *, userName: discord.User):
     """Kick a user""" 
@@ -137,7 +137,7 @@ async def Kick(ctx, *, userName: discord.User):
 			
 # Ban Command #
 
-@client.command(pass_context=True, name="Ban")
+@client.command(pass_context=True, name="ban")
 @has_permissions(ban_members=True)
 async def Ban(ctx, *, userName: discord.User):
     """Ban a user""" 
@@ -150,7 +150,7 @@ async def Ban(ctx, *, userName: discord.User):
 
 # Unban Command #
 
-@client.command(pass_context=True, name="Unban")
+@client.command(pass_context=True, name="unban")
 @has_permissions(ban_members=True)
 async def Unban(ctx, *, userName: discord.User):
     """Unban a user""" 
@@ -162,7 +162,7 @@ async def Unban(ctx, *, userName: discord.User):
 
 # Mute Command #
 
-@client.command(pass_context=True, name="Mute")
+@client.command(pass_context=True, name="mute")
 @has_permissions(mute_members=True)
 async def Mute(ctx, *, userName: discord.User):
     """Mute a user""" 
@@ -174,7 +174,7 @@ async def Mute(ctx, *, userName: discord.User):
 
 # Unmute command
 
-@client.command(pass_context=True, name="Unmute")
+@client.command(pass_context=True, name="unmute")
 @has_permissions(Mute_members=True)
 async def Unmute(ctx, *, userName: discord.User):
     """Unmute a user""" 
