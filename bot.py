@@ -125,16 +125,18 @@ async def on_ready():
 
 @client.command(pass_context=True, name="kick")
 @has_permissions(kick_members=True)
-async def Kick(ctx, *, userName: discord.User):
+async def Kick(ctx, *, target: Member):
     """Kick a user""" 
     try:
-       await client.kick(userName)
+       await client.kick(Member)
        await client.say("Successful!")
+    except Exception:
+	await client.say("An error has occured. Please try again later!")
     
 
 			
 # Ban Command #
-	
+
 @client.command(pass_context = True)
 async def Ban(ctx, userName: discord.User):
     """Ban a user""" 
