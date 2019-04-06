@@ -121,68 +121,27 @@ async def on_ready():
 	
 # # # Moderation # # #
 
-# Kick Command #
-
-@client.command(pass_context=True, name="kick")
-@has_permissions(kick_members=True)
-async def Kick(ctx, *, userName: discord.User):
-    """Kick a user""" 
-    try:
-       await client.kick(userName)
-       await client.say("Successful!")
-    except Exception:
-       await client.say("An error has occured. Please try again later! :thinking: ")
-    
-
-			
-# Ban Command #
-
-@client.command(pass_context=True, name="ban")
-@has_permissions(ban_members=True)
-async def Ban(ctx, *, userName: discord.User):
-    """Ban a user""" 
-    try:
-       await client.ban(userName)
-       await client.say("Successful!")
-    except Exception:
-       await client.say("An error has occured. Please try again later! :thinking:")
-   
-
-# Unban Command #
-
-@client.command(pass_context=True, name="unban")
-@has_permissions(ban_members=True)
-async def Unban(ctx, *, userName: discord.User):
-    """Unban a user""" 
-    try:
-       await client.unban(userName)
-       await client.say("Successful!")
-    except Exception:
-       await client.say("An error has occured. Please try again later! :thinking:")
-
 # Mute Command #
 
-@client.command(pass_context=True, name="mute")
-@has_permissions(mute_members=True)
-async def Mute(ctx, *, userName: discord.User):
-    """Mute a user""" 
-    try:
-       await client.mute(userName)
-       await client.say("Successful!")
-    except Exception:
-       await client.say("An error has occured. Please try again later! :thinking:")
+@client.command()
+async def Mute(ctx, member: discord.Member=None):
+	mute_role = discord.utils.get(ctx.guild.roles, name = 'Muted')
+	if not member:
+		client.say("Please specifiy a memeber! :thinking:")
+		return
+	await member.add_roles(mute_role)
+	await client.say("Added roles... Member will learn their lesson... Or else!")
+	
+# Unmute command #
 
-# Unmute command
-
-@client.command(pass_context=True, name="unmute")
-@has_permissions(Mute_members=True)
-async def Unmute(ctx, *, userName: discord.User):
-    """Unmute a user""" 
-    try:
-       await client.unmute(userName)
-       await client.say("Successful!")
-    except Exception:
-       await client.say("An error has occured. Please try again later! :thinking:")
+@client.command()
+async def Unmute(ctx, member: discord.Member=None):
+	mute_role = discord.utils.get(ctx.guild.roles, name = 'Muted')
+	if not member:
+		client.say("Please specifiy a memeber! :thinking:")
+		return
+	await member.remove_roles(mute_role)
+	await client.say("```I hope you learned your lesson... I removed your role... For the time being!```")
 	
 # Other important crap #
     
