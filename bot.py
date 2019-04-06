@@ -131,32 +131,58 @@ async def Kick(ctx, *, userName: discord.User):
        await client.kick(userName)
        await client.say("Successful!")
     except Exception:
-       await client.say("An error has occured. Please try again later!")
+       await client.say("An error has occured. Please try again later! :thinking: ")
     
 
 			
 # Ban Command #
 
-@client.command(pass_context = True)
-async def Ban(ctx, userName: discord.User):
+@client.command(pass_context=True, name="Ban")
+@has_permissions(ban_members=True)
+async def Ban(ctx, *, userName: discord.User):
     """Ban a user""" 
     try:
        await client.ban(userName)
        await client.say("Successful!")
-    except:
-       await client.say("You don't have permissions :thinking:")
+    except Exception:
+       await client.say("An error has occured. Please try again later! :thinking:")
    
 
-# Unban Command 3
+# Unban Command #
 
-@client.command(pass_context = True)
-async def Unban(ctx, userName: discord.User):
+@client.command(pass_context=True, name="Unban")
+@has_permissions(ban_members=True)
+async def Unban(ctx, *, userName: discord.User):
     """Unban a user""" 
     try:
        await client.unban(userName)
        await client.say("Successful!")
-    except:
-        await client.say("You don't have permissions :thinking:")
+    except Exception:
+       await client.say("An error has occured. Please try again later! :thinking:")
+
+# Mute Command #
+
+@client.command(pass_context=True, name="Mute")
+@has_permissions(mute_members=True)
+async def Mute(ctx, *, userName: discord.User):
+    """Mute a user""" 
+    try:
+       await client.mute(userName)
+       await client.say("Successful!")
+    except Exception:
+       await client.say("An error has occured. Please try again later! :thinking:")
+
+# Unmute command
+
+@client.command(pass_context=True, name="Unmute")
+@has_permissions(mute_members=True)
+async def Unmute(ctx, *, userName: discord.User):
+    """Unmute a user""" 
+    try:
+       await client.unmute(userName)
+       await client.say("Successful!")
+    except Exception:
+       await client.say("An error has occured. Please try again later! :thinking:")
 	
 # Other important crap #
     
