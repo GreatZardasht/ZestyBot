@@ -131,7 +131,7 @@ async def Kick(ctx, *, target: Member):
        await client.kick(Member)
        await client.say("Successful!")
     except Exception:
-	await client.say("An error has occured. Please try again later!")
+       await client.say("An error has occured. Please try again later!")
     
 
 			
