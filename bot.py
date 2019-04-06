@@ -123,6 +123,7 @@ async def on_ready():
 
 # Kick Command #
 
+@has_permissions(kick_members=True)
 @client.command(pass_context = True)
 async def Kick(ctx, userName: discord.User):
     """Kick a user""" 
